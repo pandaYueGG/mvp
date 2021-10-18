@@ -30,9 +30,15 @@ export default function App() {
   }
 
   const newsClick =(news) => {
-    setShowNews(!showNews);
-    setShowOne(!showOne);
+    setShowNews(false);
+    setShowOne(true);
     setOneNews(news);
+  }
+
+  const backClick = (e) => {
+    setShowNews(true);
+    setShowOne(false);
+    setOneNews(null);
   }
 
   const recData = data.filter(item => item.recommend === true);
@@ -65,7 +71,7 @@ export default function App() {
         setIsClick={clickGo}
         isClick={showCats}
       /> : null}
-      {showOne ? <OneNews onClick={newsClick} news={oneNews}/> : null}
+      {showOne ? <OneNews  handleBackClick={backClick} news={oneNews}/> : null }
     </Screen>
   );
 }
